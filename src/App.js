@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import List from './components/List';
+import Map from './components/Map';
+import Navbar from './components/Navbar';
 import './App.css';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container maxWidth='xl'>
+      <Navbar />
+      <Grid container spacing={3} sx={{width: '100%'}}>
+
+      </Grid>
+    </Container>
+  )
 }
 
-export default App;
+export default App
