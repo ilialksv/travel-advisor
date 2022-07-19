@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PlaceDetails from './PlaceDetails';
 import Container from '@mui/material/Container';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
@@ -13,6 +14,17 @@ const List = () => {
   const theme = createTheme();
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState(0)
+  const places = [
+    {name: 'Cool Place'}, 
+    {name: 'Best Beer'}, 
+    {name: 'Best Steak'},
+    {name: 'Cool Place'}, 
+    {name: 'Best Beer'}, 
+    {name: 'Best Steak'},
+    {name: 'Cool Place'}, 
+    {name: 'Best Beer'}, 
+    {name: 'Best Steak'}
+  ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -49,6 +61,13 @@ const List = () => {
             <MenuItem value={4.5}>Above 4.5</MenuItem>
           </Select>
         </FormControl>
+        <Grid container spacing={3} sx={{height: '75vh', overflow: 'auto'}}>
+          {places?.map((place, i) => (
+            <Grid item key={i} xs={12}>
+              <PlaceDetails place={place}/>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </ThemeProvider>
   )
