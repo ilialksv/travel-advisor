@@ -10,7 +10,6 @@ import Rating from '@mui/material/Rating';
 const Map = ({ setCoordinates, setBounds, coordinates }) => {
   const isMobile = useMediaQuery('min-width: 600px');
 
-
   return (
     <Container sx={{height: '85vh', width: '100%'}}>
       <GoogleMapReact

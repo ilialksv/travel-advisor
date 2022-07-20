@@ -10,21 +10,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { createTheme, ThemeProvider } from '@mui/material'
 
-const List = () => {
+const List = ({ places }) => {
   const theme = createTheme();
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState(0)
-  const places = [
-    {name: 'Cool Place'}, 
-    {name: 'Best Beer'}, 
-    {name: 'Best Steak'},
-    {name: 'Cool Place'}, 
-    {name: 'Best Beer'}, 
-    {name: 'Best Steak'},
-    {name: 'Cool Place'}, 
-    {name: 'Best Beer'}, 
-    {name: 'Best Steak'}
-  ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -32,7 +21,7 @@ const List = () => {
         <Typography variant='h4'>Restaurants, Hotels & Attractions around you</Typography>
         <FormControl 
           variant="standard" 
-          sx={{margin: theme.spacing(1)}}
+          sx={{margin: theme.spacing(1), minWidth: 120, marginBottom: '30px'}}
         >
           <InputLabel id="demo-simple-select-standard-label">Type</InputLabel>
           <Select 
@@ -46,7 +35,7 @@ const List = () => {
             <MenuItem value='attractions'>Attractions</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="standard" sx={{margin: theme.spacing(1)}}>
+        <FormControl variant="standard" sx={{margin: theme.spacing(1), minWidth: 120, marginBottom: '30px'}}>
           <InputLabel id="demo-simple-select-standard-label">Rating</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
