@@ -11,8 +11,9 @@ import Rating from '@mui/material/Rating';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 
-const PlaceDetails = ({ place }) => {
-  console.log(place);
+const PlaceDetails = ({ place, selected, refProp }) => {
+  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
   return (
     <Card elecation={6}>
       <CardMedia 
@@ -22,6 +23,10 @@ const PlaceDetails = ({ place }) => {
       />
       <CardContent>
         <Typography gutterBottom variant='h5'>{ place.name }</Typography>
+        <Box display='flex' justifyContent='space-between'>
+          <Rating value={Number(place.rating)} readOnly />
+          <Typography gutterBottom variant='subtitle1'>out of {place.num_reviews}</Typography>
+        </Box>
         <Box display='flex' justifyContent='space-between'>
           <Typography variant='subtitle1'>Price</Typography>
           <Typography gutterBottom variant='subtitle1'>{place.price_level}</Typography>
@@ -37,8 +42,35 @@ const PlaceDetails = ({ place }) => {
           </Box>
         ))}
         {place?.cuisine?.map(({ name }) => (
-          <Chip key={name} size='small' label={name} />
+          <Chip key={name} size='small' label={name} sx={{margin: '5px 5px 5px 0px'}} />
         ))}
+        {place?.address && (
+          <Typography gutterBottom variant='body2' color='textSecondary' sx={{
+            display: 'flex', 
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginTop: '10px'
+          }}>
+            <LocationOnIcon /> {place.address}
+          </Typography>
+        )}
+        {place?.phone && (
+          <Typography gutterBottom variant='body2' color='textSecondary' sx={{
+            display: 'flex', 
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <PhoneIcon /> {place.phone}
+          </Typography>
+        )}
+        <CardActions>
+          <Button size="small" color="primary" onClick={() => window.open(place.web_url, '_blank')}>
+            Trip Advisor
+          </Button>
+          <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
+            Website
+          </Button>
+        </CardActions>
       </CardContent>
     </Card>
   )
