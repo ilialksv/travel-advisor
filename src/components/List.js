@@ -8,11 +8,19 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { createTheme, ThemeProvider } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material';
+import { styled } from '@mui/material';
 
 const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
   const theme = createTheme();
   const [elRefs, setElRefs] = useState([]);
+
+  const Loading = styled('div')({
+    height: '600px', 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  })
   
   useEffect(() => {
     const refs = Array(places?.length).fill().map((_, index) => elRefs[index] || createRef())
@@ -24,14 +32,9 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
       <Container sx={{padding: '25px'}}>
         <Typography variant='h4'>Restaurants, Hotels & Attractions around you</Typography>
         {isLoading ? (
-          <div sx={{
-            height: '600px', 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center'
-          }}>
+          <Loading>
             <CircularProgress size="5rem" />
-          </div>
+          </Loading>
         ) : (
         <>
           <FormControl 
