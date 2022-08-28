@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <Box>
-      <Navbar />
+      <Navbar setCoordinates={setCoordinates} />
       <Grid container spacing={3} sx={{width: '100%'}}>
         <Grid item xs={12} md={4}>
           <List 
